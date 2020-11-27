@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import CardViewer from './CardViewer';
-import CardEditor from './CardEditor';
 
 class HomePage extends React.Component {
     render () {

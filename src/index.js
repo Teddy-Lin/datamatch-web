@@ -22,6 +22,8 @@ const firebaseConfig = {
     messagingSenderId: "955597322163",
     appId: "1:955597322163:web:eda852f0452aa8db9a3dc6"
   };
+
+firebase.initializeApp(firebaseConfig);
   
   // Add firebase to reducers
 const rootReducer = combineReducers({
