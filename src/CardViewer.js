@@ -1,6 +1,9 @@
 import React from 'react';
 import './CardViewer.css'
 import {Link} from 'react-router-dom';
+import {firebaseConnect} from 'react-redux-firebase';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
 
 class CardViewer extends React.Component{
     constructor(props){
@@ -67,4 +70,14 @@ class CardViewer extends React.Component{
     }
 }
 
-export default CardViewer;
+const mapStateToProps = state => {
+    const deck = state.firebase.data.deck1;
+    const name = deck.name;
+    const cards = deck.cards;
+    return {cards: cards, name: name};
+}
+
+export default compose (
+    firebaseConnect([{path: '/flashcards/deck1', storeAs: 'deck1' }]),
+    connect(mapStateToProps),
+)(CardViewer);

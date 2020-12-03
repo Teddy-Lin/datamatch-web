@@ -2,6 +2,7 @@ import React from 'react';
 import CardEditor from './CardEditor';
 import CardViewer from './CardViewer';
 import HomePage from './HomePage';
+import Test from './Test';
 
 import {Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
@@ -47,6 +48,12 @@ class App extends React.Component {
           cards ={this.state.cards}
           />
         </Route>
+        <Route path = "/test/:id">
+          <Test/>
+        </Route>
+        {/* <Route exact path = "/test">
+          <Test/>
+        </Route> */}
       </Switch>
 
     );
