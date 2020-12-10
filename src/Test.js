@@ -19,9 +19,8 @@ const Test = props => {
     //  const isEmpty = state.firebase.profile.isEmpty;
      const flashcards = state.firebase.data.flashcards;
     //  return {test: '1234', hello: 'world', isEmpty: isEmpty};
-    return {flashcards: flashcards};
+    return {flashcards};
  };
-
 
 // export default Test;
 // export default withRouter(Test);
