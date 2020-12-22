@@ -49,7 +49,6 @@ const rrfProps = {
     // createFirestoreInstance // <- needed if using firestore
   }
   
-  
 
 ReactDOM.render(
     <Provider store={store}>

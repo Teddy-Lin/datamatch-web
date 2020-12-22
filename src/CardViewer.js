@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardViewer.css'
+import './CardViewer.css';
 import {Link, withRouter} from 'react-router-dom';
 import {firebaseConnect, isLoaded, isEmpty} from 'react-redux-firebase';
 import {connect} from 'react-redux';
@@ -15,6 +15,7 @@ class CardViewer extends React.Component{
     }
 
     flip = () => this.setState({front: !this.state.front});
+
     next = () => {
         if (this.state.index < this.props.cards.length - 1) {
             this.setState({
@@ -33,7 +34,7 @@ class CardViewer extends React.Component{
         
     
     render(){
-        if (!isLoaded(this.props.card)) {
+        if (!isLoaded(this.props.cards)) {
             return <div>Loading...</div>;
         }
         if (isEmpty(this.props.cards)){
@@ -66,7 +67,6 @@ class CardViewer extends React.Component{
                         {cards[this.state.index]}
                     </tbody>
                 </table>
-                {/* why three ===? */}
                 <button disabled = {this.state.index === 0} onClick = {() => this.previous()}>Previous</button>
                 <button disabled = {this.state.index === this.props.cards.length - 1} onClick = {() => this.next()}>Next</button>
                 <hr/>

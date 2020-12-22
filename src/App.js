@@ -3,7 +3,6 @@ import CardEditor from './CardEditor';
 import CardViewer from './CardViewer';
 import HomePage from './HomePage';
 // import Test from './Test';
-
 import {Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 
@@ -14,9 +13,7 @@ const App = () => {
           <HomePage/>
         </Route>
         <Route exact path = "/editor">
-          <CardEditor 
-            deleteCard = {this.deleteCard} 
-          />
+          <CardEditor/>
         </Route>
         <Route exact path = "/viewer/:deckID">
           <CardViewer/>
