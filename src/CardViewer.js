@@ -54,7 +54,6 @@ class CardViewer extends React.Component{
                     </tr>
                 )
             }
-            
         });
 
         return(
@@ -76,6 +75,8 @@ class CardViewer extends React.Component{
     }
 }
 
+
+// getting data from redux state, put it in props
 const mapStateToProps = (state, props) => {
     const deck = state.firebase.data[props.match.params.deckId];
     const name = deck && deck.name;
@@ -86,9 +87,8 @@ const mapStateToProps = (state, props) => {
 export default compose (
     withRouter, 
     firebaseConnect(props => {
-        console.log(props);
         const deckId = props.match.params.deckId
-        return [{path: '/flashcards/${deckId}', storeAs: deckId }]
+        return [{path: `/flashcards/${deckId}`, storeAs: deckId }]
     }),
     connect(mapStateToProps),
 )(CardViewer);

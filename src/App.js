@@ -15,7 +15,7 @@ const App = () => {
         <Route exact path = "/editor">
           <CardEditor/>
         </Route>
-        <Route exact path = "/viewer/:deckID">
+        <Route exact path = "/viewer/:deckId">
           <CardViewer/>
         </Route>
         <Route>

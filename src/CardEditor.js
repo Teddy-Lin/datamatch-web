@@ -32,7 +32,7 @@ class CardEditor extends React.Component {
 
     addCard = () => {
         // if neither side is empty
-        if (this.state.front.trim() && this.state.back.trim()){
+        if (!this.state.front.trim() || !this.state.back.trim()){
             alert("Cannot add empty card");
             return 
         } 
@@ -52,15 +52,15 @@ class CardEditor extends React.Component {
         this.setState({[event.target.name]: event.target.value});
     };
 
+    // uploading to firebase
     createDeck = () => {
-        const deckId = this.props.firebase.push('./flashcards').key;
+        const deckId = this.props.firebase.push('/flashcards').key;
         const updates = {};
         const newDeck = {cards: this.state.cards, name: this.state.name};
         updates[`/flashcards/${deckId}`] = newDeck;
         updates[`/homepage/${deckId}`] = { name: this.state.name };
         const onComplete = () => this.props.history.push(`/viewer/${deckId}`);
         this.props.firebase.update('/', updates, onComplete);
-        
     }
 
     render() {
@@ -102,10 +102,16 @@ class CardEditor extends React.Component {
                 </table>
                 <br/>
                 <input 
-                name = "name"
+                name = "front"
                 onChange = {this.handleChange} 
-                placeholder = "Name of Deck" 
-                value = {this.state.name}
+                placeholder = "Front" 
+                value = {this.state.front}
+                />
+                <input 
+                name = "back"
+                onChange = {this.handleChange} 
+                placeholder = "Back" 
+                value = {this.state.back}
                 />
                 <button onClick = {this.addCard}>Add Card</button>
                 <hr/>
